@@ -1,5 +1,39 @@
 /* add css module styles here (optional) */
 
+.root {
+
+}
+
+.side {
+  width: 20%;
+  /* display: inline-block; */
+}
+
+.main {
+  /* display: inline-block; */
+}
+
+.collection {
+}
+
+
+.collection th {
+  color: #235a81;
+  border-right: 1px solid #fff;
+  background: linear-gradient(#fff, #ccc);
+}
+
+.collection tr:nth-child(even) {
+  background: #dfdfdf;
+}
+
+.collection td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
 .test {
   margin: 2em;
   padding: 0.5em;
