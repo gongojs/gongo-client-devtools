@@ -41,3 +41,15 @@
   font-size: 2em;
   text-align: center;
 }
+
+.pendingIconTrue {
+  padding-left: 2px;
+  padding-right: 2px;
+  color: red;
+}
+
+.pendingIconFalse {
+  padding-left: 2px;
+  padding-right: 2px;
+  color: rgba(0,0,0,0.1);
+}
