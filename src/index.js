@@ -36,6 +36,15 @@ const Collection = ({ colName, hideMeta=true }) => {
   });
   labels.sort();
 
+  const newRow = {};
+  labels.forEach(label => {
+    if (label === '_id') return;
+    switch (typeof rows[0].label) {
+      case 'number': newRow[label] = 0; break;
+      default: newRow[label] = '';
+    }
+  });
+
   return <table className={styles.collection}>
     <thead>
       <tr>
@@ -63,6 +72,16 @@ const Collection = ({ colName, hideMeta=true }) => {
           </tr>
         )
       }
+      <tr key="new" className={styles.colRow}>
+        <td>
+          <button disabled="disabled">&#x2717;</button>
+          <EditRowButton db={db} colName={colName} row={newRow} />
+          <span className={styles.pendingIconFalse}>⇋</span>
+        </td>
+        {
+          labels.map(label => <td key={label}></td>)
+        }
+      </tr>
     </tbody>
   </table>
 };

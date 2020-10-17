@@ -20,7 +20,10 @@ const EditRow = ({ db, colName, doc, close }) => {
   const [newDoc, setNewDoc] = useState(null);
   function onChange(data) { setNewDoc(data.jsObject) }
   function save() {
-    db.collection(colName).updateId(doc._id, newDoc);
+    if (doc._id)
+      db.collection(colName).updateId(doc._id, newDoc);
+    else
+      db.collection(colName).insert(newDoc);
     close();
   }
 
