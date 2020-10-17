@@ -1,10 +1,10 @@
 {
-  "name": "gongo-my-admin",
+  "name": "gongo-client-devtools",
   "version": "1.0.0",
   "description": "Made with create-react-library",
   "author": "gadicc",
   "license": "MIT",
-  "repository": "gongojs/gongo-my-admin",
+  "repository": "gongojs/gongo-client-devtools",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

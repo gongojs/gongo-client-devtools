@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
+import ReactDOM from 'react-dom';
 import styles from './styles.module.css'
 import { useGongoLive, useGongoUserId, useGongoOne, useGongoIsPopulated, IsPopulated } from 'gongo-react';
 
 import EditRowButton from './editRow';
 
-const Collections = ({ setCurrentCollection }) => {
-  const collections = [ 'users', 'test' ];
-  return <ul>
+const Collections = ({ currentCollection, setCurrentCollection }) => {
+  const collections = [ 'users', 'test', 'todos' ].sort();
+  return <div>
     {
       collections.map(colName =>
-        <a href="#" key={colName} onClick={() => setCurrentCollection(colName) && false}>
-          <li>{colName}</li>
-        </a>
+        <button key={colName} disabled={colName === currentCollection}
+            onClick={() => setCurrentCollection(colName) && false}>
+          {colName}
+        </button>
       )
     }
-  </ul>
+  </div>
 }
 
 const Collection = ({ colName, hideMeta=true }) => {
@@ -66,11 +68,11 @@ const Collection = ({ colName, hideMeta=true }) => {
 };
 
 const GongoMyAdmin = () => {
-  const [currentCollection, setCurrentCollection] = useState('test');
+  const [currentCollection, setCurrentCollection] = useState('todos');
 
   return <div className={styles.root}>
     <div className={styles.side}>
-      <Collections setCurrentCollection={setCurrentCollection} />
+      <Collections currentCollection={currentCollection} setCurrentCollection={setCurrentCollection} />
     </div>
     <div className={styles.main}>
       <Collection colName={currentCollection} />
@@ -78,4 +80,12 @@ const GongoMyAdmin = () => {
   </div>
 }
 
-export default GongoMyAdmin;
+function DevTools() {
+  return (
+    <GongoMyAdmin />
+  )
+}
+
+const root = document.createElement('div');
+window.document.body.appendChild(root);
+ReactDOM.render(<DevTools className={styles.root} />, root);
